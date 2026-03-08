@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <h1>Welcome to day 18 of learning javascript</h1>
+    <p>Hope you are enjoying it</p>
+    <h2>Test</h2>
+
+    <div>
+        <h2 style="display: none;">Test me</h2>
+    </div>
+
+    <div id="removeMe">I am going to be removed</div>
+
+    <ul id="myList">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+
+    <img src="someImage.png" alt="Some Image" height="200px" width="200px">
+
+    <div id="main-id" class="main-class layout">
+        <p class="info">
+            <span id="text">I love Dom</span>
+        </p>
+        <!-- I have added a comment here -->
+    </div>
+
+    <P id="p-id" style="background-color: green; color: #fff;"> Let's do some manipution styles</P>
+
+    <div>
+        <h2>Toggle Paragraph Example</h2>
+        <button onclick="toggleParagraph()">Show/Hide Paragraph</button>
+        <p class="info" id="myParagraph">This is a paragraph that can be shown or hidden by clicking the abouve button</p>
+    </div>
+
+    <div class="task-manager">
+        <div class="container">
+        <h2>Task Manager</h2>
+        <input type="text" id="taskInput" placeholder="New Task">
+        <button onclick="addTask()">Add Task</button>
+
+        <input type="text" id="searchInput" placeholder="Search Tasks...">
+        <ul id="taskList"></ul>
+        </div>
+    </div>
+</body>
+</html>

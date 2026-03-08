@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+    background-color: papayawhip;
+    border-radius: 10px;
+}
+
+.input{
+    margin-top: 2rem;
+}
+
+.search-input{
+    border: none;
+    outline: none;
+    background-color: rgba(128, 128, 128, 0.774);
+    font-size: 1.2rem;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    color: black;
+    padding-left: 10px;
+}
+
+.search-input::placeholder{
+    color: white;
+    padding-left: 10px;
+}
+
+#clear-btn{
+    border: none;
+    outline: none;
+    color: black;
+    background-color: rgba(128, 128, 128, 0.774);
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+#clear-btn:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.details {
+  max-height: 0;               /* collapsed */
+  overflow: hidden;            /* hide overflowing content */
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 0;                /* remove padding when collapsed */
+}
+
+.open{
+    max-height: 500px;           /* adjust for largest content */
+  padding: 0.5rem 0;           /* show padding when expanded */
+}

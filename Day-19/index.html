@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <h1>Welcome to day 19 of learning javascript</h1>
+    <p>Hope you are enjoying 40 days of javascript</p>
+
+    <hr>
+
+    <h2>Event Handling</h2>
+    <button id="myBtn" onclick="handleClick('hello')">Click Me</button>
+    <!-- onclick="handleClick('hello')" hello must be wrapped in single quotes since the handleClick function is inside double quotes -->
+     <button id="myBtn2">Click Me 2</button>
+     <button id="countBtn">Count++</button>
+
+     <hr>
+
+     <h2>Event Object</h2>
+     <input type="text" name="search" id="search-id" placeholder="Search...">
+
+     <hr>
+    <h1>Event Bubbling and Capturing</h1>
+    
+    <div id="grandParent">
+        <div id="parent">
+            <button id="child">Click Me</button>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <h2>Event Delegation</h2>
+    <ul id="itemList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <hr>
+    <div id="father" style="padding: 30px; background-color: #cfd8dc;"> Parent
+        <button id="son" style="margin: 10px;">Click Me</button>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+
+
+.main-class{
+    font-size: large;
+    padding: 2px;
+    border: 2px solid red;
+    background-color: pink;
+    border-radius: 5px;
+}
+
+.secondary-class{
+    font-size: large;
+    padding: 2px;
+    border: 2px solid green;
+    background-color: teal;
+    border-radius: 5px;
+}
+
+.hidden{
+    display: none;
+}
+
+.task-manager{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 2rem;
+    background-color: papayawhip;
+    width: 80%;
+    height: auto;
+    font-size: 1.5rem;
+}
+
+.contaoner{
+    display: flex;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+li{
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: green;
+}
