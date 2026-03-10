@@ -1,0 +1,28 @@
+{
+  "api": {
+    "pizzahub": {
+      "pizzas": {
+        "101": [
+          {
+            "id": 1,
+            "shopId": 101,
+            "name": "Margherita",
+            "type": "Vegetarian",
+            "price": 8.5,
+            "currency": "USD"
+          }
+        ],
+        "102": [
+          {
+            "id": 2,
+            "shopId": 102,
+            "name": "Pepperoni",
+            "type": "Non-Vegetarian",
+            "price": 10,
+            "currency": "USD"
+          }
+        ]
+      }
+    }
+  }
+}
