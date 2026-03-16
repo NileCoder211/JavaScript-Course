@@ -37,6 +37,7 @@ let performOrder = (result) => {
   });
 };
 
+
 // Confirm the order
 let confirmOrder = (type, name, createdAt) => {
   console.log(
@@ -57,3 +58,28 @@ function orderPizza(type, name) {
 
 // Call the orderPizza method
 orderPizza("Vegetarian", "Margherita");
+
+
+
+
+
+// ======= async/await version of pizzahub =======
+/*
+
+
+async function orderPizza(type, name) {
+    try {
+        const shopIds = await getShopIds();
+        const pizzas = await getPizzaList(shopIds[0]);
+        const pizzaWithAddOns = await getMyPizzaWithAddOn(pizzas, type, name);
+        const order = await performOrder(pizzaWithAddOns[0]);
+
+        confirmOrder(type, name, order.createdAt);
+    } catch (error) {
+        console.log(`Bad luck, No Pizza for you today! ${error}`);
+    }
+}
+
+// Call the orderPizza method
+orderPizza("veg", "Margherita");
+ */
