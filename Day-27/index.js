@@ -159,7 +159,6 @@ function main() {
 }
 main();
 
-
 //  ========= EXPLANATION =========
 /* 
 Step 1: Global Execution
@@ -294,7 +293,7 @@ function main() {
 }
 main();
 
- //  ========= EXPLANATION =========
+//  ========= EXPLANATION =========
 /* 
 Step-by-Step Execution
 ✅ Step 1: Global Execution
@@ -578,4 +577,247 @@ All Microtasks →
 🔹 One-Line Master Rule
 
 “After every task, JavaScript drains the microtask queue completely.”
+ */
+
+// ==========  EXERCISE 1: ===========
+const tom = () => console.log("Tom");
+
+const jerry = () => console.log("Jerry");
+
+const cartoon = () => {
+  console.log("Cartoon");
+
+  setTimeout(tom, 5000);
+
+  new Promise((resolve, reject) =>
+    resolve("should it be right after Tom, before Jerry?"),
+  ).then((resolve) => console.log(resolve));
+
+  jerry();
+};
+
+cartoon();
+
+// ========== EXPLANATION =========
+
+/* 
+🔹 Final Output
+Cartoon
+Jerry
+should it be right after Tom, before Jerry?
+Tom
+🔥 Step-by-Step Execution
+✅ Step 1: Run synchronous code first
+console.log('Cartoon')
+
+👉 Output:
+
+Cartoon
+✅ Step 2: setTimeout(tom, 5000)
+
+Sent to Web APIs
+
+Will run after 5 seconds
+
+Goes later to Callback Queue
+
+⛔ Doesn’t run now
+
+✅ Step 3: Promise
+resolve('should it be right after Tom, before Jerry?')
+
+Resolves immediately (synchronously)
+
+.then() goes to Microtask Queue
+
+⛔ Doesn’t log yet
+
+✅ Step 4: jerry()
+
+👉 Runs immediately (still synchronous)
+
+Jerry
+✅ Step 5: Call stack is now empty
+
+Now event loop starts working 👇
+
+🔁 Step 6: Microtasks run FIRST
+
+👉 Promise callback executes:
+
+should it be right after Tom, before Jerry?
+🔁 Step 7: Wait for timer (5 seconds)
+
+After ~5 seconds:
+
+👉 tom() runs:
+
+Tom
+🔹 ❗ Why your expectation feels wrong
+
+You asked:
+
+“should it be right after Tom, before Jerry?”
+
+👉 The answer is NO, because:
+
+🔥 Rule:
+
+Promises (microtasks) always run before timers (macrotasks)
+
+🔹 Actual Priority
+1. Synchronous code
+2. Microtasks (Promises)
+3. Timers (setTimeout)
+🔹 So what really happened?
+Cartoon      ← sync
+Jerry        ← sync
+Promise      ← microtask
+Tom          ← timer (after 5s)
+🔹 What is undefined?
+
+You saw:
+
+undefined
+
+👉 That comes from the browser console, not your code.
+
+cartoon() returns nothing
+
+So console shows: undefined
+
+🔹 Key Takeaways (Super Important)
+✅ 1. Promises beat timers
+
+Even setTimeout(..., 0) runs AFTER .then()
+
+✅ 2. Sync code always finishes first
+
+jerry() runs before promise
+
+✅ 3. Timers depend on delay
+
+tom() waits 5 seconds no matter what
+
+🔹 One-Line Rule
+
+“Sync → Promise → Timer (no matter the delay)”
+ */
+
+
+// ============= How SetTimeout function ===========
+/* 
+why are we calling tom and doggy like thess:  setTimeout(tom, 50);  setTimeout(tom(), 50); 
+  setTimeout(doggy(), 30);
+
+Ahh this is a very important distinction—and a super common mistake.
+
+You’re comparing:
+
+setTimeout(tom, 50);     // ✅ correct
+setTimeout(tom(), 50);   // ❌ very different
+setTimeout(doggy(), 30); // ❌ same issue
+
+Let’s break it down clearly.
+
+🔹 1. setTimeout(tom, 50) ✅
+
+👉 Here you are passing the function itself
+
+You are saying:
+
+“Hey browser, run tom after 50ms”
+
+Nothing runs immediately
+
+Equivalent to:
+setTimeout(() => tom(), 50);
+
+✔️ Correct usage
+
+🔹 2. setTimeout(tom(), 50) ❌
+
+👉 Here you are calling the function immediately
+
+What happens:
+
+tom() runs right away
+
+It logs:
+
+Tom
+
+The return value of tom() is passed to setTimeout
+
+Since:
+
+const tom = () => console.log("Tom");
+
+👉 tom() returns undefined
+
+So this becomes:
+
+setTimeout(undefined, 50);
+
+⛔ Which is useless / wrong
+
+🔹 3. setTimeout(doggy(), 30) ❌
+
+Same issue:
+
+doggy() runs immediately
+
+Its return value (likely undefined) is passed to setTimeout
+
+Nothing meaningful is scheduled
+
+🔥 Core Difference
+Code	What happens
+setTimeout(tom, 50)	Pass function → runs later ✅
+setTimeout(tom(), 50)	Run now → pass result ❌
+🔹 Simple Analogy
+
+Think of it like this:
+
+✅ Correct:
+setTimeout(tom, 50);
+
+👉 “Call Tom later”
+
+❌ Wrong:
+setTimeout(tom(), 50);
+
+👉 “Call Tom NOW, then schedule nothing”
+
+🔹 When would you use ()?
+
+Only when wrapping:
+
+setTimeout(() => tom(), 50);
+
+👉 This delays execution properly
+
+🔹 Quick Rule (Memorize This)
+Use function reference → tom
+NOT function call → tom()
+🔹 Bonus Interview Trap
+
+What happens here?
+
+setTimeout(console.log("Hi"), 1000);
+
+👉 Output:
+
+Hi   ← immediately
+
+Because:
+
+console.log("Hi") runs instantly
+
+setTimeout(undefined, 1000) does nothing
+
+🔹 Final Takeaway
+
+Parentheses () = execute now
+No parentheses = pass function to run later
  */
