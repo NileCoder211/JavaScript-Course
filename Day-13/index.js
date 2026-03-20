@@ -3,6 +3,7 @@
 //  It helps in catching common coding errors and "unsafe" actions such as defining global variables.
 
 console.log("Welcome to Day 13: The this keyword");
+// "this" keyword is like that friend who like picking sides in an argument
 
 // Global Context
 
