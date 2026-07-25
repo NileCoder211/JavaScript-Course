@@ -1,6 +1,5 @@
-console.log("Day 04");
+console.log("Day 04: *** CONTROL FLOW & BRANCHING **");
 
-// CONTROL FLOW & BRANCHING //
 // IF CONDITION
 let catchThisBUS = false;
 
